@@ -81,11 +81,13 @@ public class HBaseServiceTest {
                 System.out.println(k + "---->" + v);
             });
         });
+
     }
 
 
     @Test
     public void testTestGetResultScanner() {
+        System.out.println("=====testTestGetResultScanner()====");
     }
 
     /**
