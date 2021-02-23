@@ -1,4 +1,4 @@
-package com.example.hbase.stater.configuration;//package com.example.hbase.stater.configuration;
+//package com.example.hbase.stater.configuration;
 //
 //import com.example.hbase.stater.component.HBaseServiceWith1x;
 //import org.apache.hadoop.hbase.HBaseConfiguration;
@@ -14,6 +14,7 @@ package com.example.hbase.stater.configuration;//package com.example.hbase.state
 //
 ///**
 // * HBase配置
+// *
 // * @author jackie wang
 // * @since 2021/2/1 17:27
 // */
@@ -29,7 +30,16 @@ package com.example.hbase.stater.configuration;//package com.example.hbase.state
 //    @Bean
 //    public HBaseServiceWith1x getHbaseService() {
 //        // 初始化hadoop home路径
-//        System.setProperty("hadoop.home.dir", properties.getHadoopHome());
+//        if (properties.getHadoopHome() != null && properties.getHadoopHome().trim().length() > 0) {
+//            System.setProperty("hadoop.home.dir", properties.getHadoopHome());
+//        } else {
+//            String hadoopHome = System.getenv("HADOOP_HOME");
+//            if (StringUtils.isNotBlank(hadoopHome)) {
+//                System.setProperty("hadoop.home.dir", hadoopHome);
+//            } else {
+//                throw new RuntimeException("The current project environment variable 'Hadoop Home' cannot be empty.");
+//            }
+//        }
 //
 //        // configuration通过HBaseConfiguration.create()加装hbase-site.xml配置文件中的属性值
 //        org.apache.hadoop.conf.Configuration configuration = HBaseConfiguration.create();

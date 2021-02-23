@@ -1,6 +1,7 @@
 package com.example.hbase.stater.configuration;
 
 import com.example.hbase.stater.component.HBaseService;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +30,16 @@ public class HBaseAutoConfiguration {
     @Bean
     public HBaseService getHbaseService() {
         // 初始化hadoop home路径
-        System.setProperty("hadoop.home.dir", properties.getHadoopHome());
+        if(properties.getHadoopHome() !=null && properties.getHadoopHome().trim().length()>0) {
+            System.setProperty("hadoop.home.dir", properties.getHadoopHome());
+        } else {
+            String hadoopHome = System.getenv("HADOOP_HOME");
+            if (StringUtils.isNotBlank(hadoopHome)) {
+                System.setProperty("hadoop.home.dir", hadoopHome);
+            } else {
+                throw new RuntimeException("The current project environment variable 'Hadoop Home' cannot be empty.");
+            }
+        }
 
         // configuration通过HBaseConfiguration.create()加装hbase-site.xml配置文件中的属性值
         org.apache.hadoop.conf.Configuration configuration = HBaseConfiguration.create();
