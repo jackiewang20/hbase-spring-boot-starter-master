@@ -288,7 +288,6 @@ public class HBaseServiceTest {
 //
 //
 //    }
-
     @Test
     public void testDeleteTable() {
         hbaseService.deleteTable("test");

@@ -23,9 +23,9 @@ spring.hbase.hadoop-home=c:/hadoop
 
 ###例如linux平台hadoop集群hosts配置为：
 vi /etc/hosts
-192.168.10.81  hadoop-hbase001
-192.168.10.82  hadoop-hbase002
-192.168.10.83  hadoop-hbase003
+192.168.34.3  hadoop-server-001
+192.168.34.4  hadoop-server-002
+192.168.34.5  hadoop-server-003
 
 复制以上配置，然后打开windows系统C:\windows\system32\drivers\etc\hosts文件，将hadoop (hbase)集群的ip地址粘贴配置到该文件中。
 

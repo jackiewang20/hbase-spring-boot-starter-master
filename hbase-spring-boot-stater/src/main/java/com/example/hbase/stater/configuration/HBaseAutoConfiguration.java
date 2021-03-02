@@ -15,6 +15,7 @@ import static com.example.hbase.stater.configuration.HBaseProperties.PREFIX;
 
 /**
  * HBase配置
+ *
  * @author jackie wang
  * @since 2021/2/1 17:27
  */
@@ -30,7 +31,7 @@ public class HBaseAutoConfiguration {
     @Bean
     public HBaseService getHbaseService() {
         // 初始化hadoop home路径
-        if(properties.getHadoopHome() !=null && properties.getHadoopHome().trim().length()>0) {
+        if (properties.getHadoopHome() != null && properties.getHadoopHome().trim().length() > 0) {
             System.setProperty("hadoop.home.dir", properties.getHadoopHome());
         } else {
             String hadoopHome = System.getenv("HADOOP_HOME");

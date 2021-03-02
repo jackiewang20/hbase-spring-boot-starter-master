@@ -208,7 +208,6 @@ public class HBaseService {
      * 遍历查询指定表中的所有数据。
      *
      * @param tableName 表名；
-     *
      * @return java.util.Map<java.lang.String, java.util.Map < java.lang.String, java.lang.String>>
      */
     public Map<String, Map<String, String>> getResultScanner(String tableName) {
