@@ -47,6 +47,13 @@ public class HBaseAutoConfiguration {
         configuration.set("hbase.zookeeper.quorum", properties.getZookeeperQuorum());
         configuration.set("hbase.master.port", properties.getClientPort());
         configuration.set("hbase.rootdir", properties.getZnodeParent());
+
+        if (properties != null && properties.getSecurityAuthentication() != null
+                && properties.getSecurityAuthentication().equals("kerberos")) {
+            configuration.set("hbase.security.authentication", "kerberos");
+            configuration.set("hbase.master.kerberos.principal", properties.getMasterKerberosPrincipal());
+            configuration.set("hbase.regionserver.kerberos.principal", properties.getRegionserverKerberosPrincipal());
+        }
         return new HBaseService(configuration);
     }
 

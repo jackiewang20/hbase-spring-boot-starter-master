@@ -9,7 +9,7 @@
 //import org.springframework.boot.context.properties.EnableConfigurationProperties;
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
-//
+//import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 //import static com.example.hbase.stater.configuration.HBaseProperties.PREFIX;
 //
 ///**
@@ -20,6 +20,7 @@
 // */
 //@Configuration
 //@EnableConfigurationProperties(HBaseProperties.class) // 激活配置属性
+//@AutoConfigureOrder(Integer.MIN_VALUE+1) // 为了让kerberos自动配置先初始化bean
 //@ConditionalOnProperty(prefix = PREFIX, value = "zookeeper-quorum") // 条件加载配置属性，如果满足条件，实例化当前类
 //public class HBase1xAutoConfiguration {
 //    Logger logger = LoggerFactory.getLogger(getClass());
@@ -46,6 +47,13 @@
 //        configuration.set("hbase.zookeeper.quorum", properties.getZookeeperQuorum());
 //        configuration.set("hbase.master.port", properties.getClientPort());
 //        configuration.set("hbase.rootdir", properties.getZnodeParent());
+//
+//        if (properties != null && properties.getSecurityAuthentication() != null
+//                && properties.getSecurityAuthentication().equals("kerberos")) {
+//                configuration.set("hbase.security.authentication", "kerberos");
+//                configuration.set("hbase.master.kerberos.principal", properties.getMasterKerberosPrincipal());
+//                configuration.set("hbase.regionserver.kerberos.principal", properties.getRegionserverKerberosPrincipal());
+//                }
 //        return new HBaseServiceWith1x(configuration);
 //    }
 //

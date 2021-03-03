@@ -16,6 +16,9 @@ public class HBaseProperties {
     private String clientPort;
     private String znodeParent;
     private String hadoopHome;
+    private String securityAuthentication;
+    private String masterKerberosPrincipal;
+    private String regionserverKerberosPrincipal;
 
     public String getZookeeperQuorum() {
         return zookeeperQuorum;
@@ -47,5 +50,29 @@ public class HBaseProperties {
 
     public void setHadoopHome(String hadoopHome) {
         this.hadoopHome = hadoopHome;
+    }
+
+    public String getSecurityAuthentication() {
+        return securityAuthentication;
+    }
+
+    public void setSecurityAuthentication(String securityAuthentication) {
+        this.securityAuthentication = securityAuthentication;
+    }
+
+    public String getMasterKerberosPrincipal() {
+        return masterKerberosPrincipal;
+    }
+
+    public void setMasterKerberosPrincipal(String masterKerberosPrincipal) {
+        this.masterKerberosPrincipal = masterKerberosPrincipal;
+    }
+
+    public String getRegionserverKerberosPrincipal() {
+        return regionserverKerberosPrincipal;
+    }
+
+    public void setRegionserverKerberosPrincipal(String regionserverKerberosPrincipal) {
+        this.regionserverKerberosPrincipal = regionserverKerberosPrincipal;
     }
 }
